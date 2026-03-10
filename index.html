@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nature's Beauty | Digital Garden</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 1s ease;
+        }
+        
+        h1 {
+            font-size: 4rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #f6d365, #fda085);
+            border-radius: 2px;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.9);
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .hero-section {
+            background: rgba(255,255,255,0.95);
+            border-radius: 30px;
+            padding: 60px;
+            margin-bottom: 60px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .hero-section:hover {
+            transform: translateY(-5px);
+        }
+        
+        .hero-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .hero-text h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-text p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #f6d365, #fda085);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 5rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .quote-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 30px;
+            padding: 80px 40px;
+            margin-bottom: 60px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quote-section::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 200px;
+            opacity: 0.1;
+            font-family: serif;
+        }
+        
+        .quote-section::after {
+            content: '"';
+            position: absolute;
+            bottom: -60px;
+            right: 20px;
+            font-size: 200px;
+            opacity: 0.1;
+            font-family: serif;
+        }
+        
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.4;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .quote-author {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .gallery {
+            margin-bottom: 60px;
+        }
+        
+        .gallery h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .gallery-item:nth-child(1) { background: linear-gradient(135deg, #f6d365, #fda085); }
+        .gallery-item:nth-child(2) { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .gallery-item:nth-child(3) { background: linear-gradient(135deg, #5ee7df, #b490ca); }
+        .gallery-item:nth-child(4) { background: linear-gradient(135deg, #c3cfe2, #f5f7fa); }
+        .gallery-item:nth-child(5) { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .gallery-item:nth-child(6) { background: linear-gradient(135deg, #f6d365, #fda085); }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .cta-section {
+            background: white;
+            border-radius: 30px;
+            padding: 60px;
+            text-align: center;
+            margin-bottom: 60px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 18px 45px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 50px auto;
+            padding: 40px;
+            border-radius: 30px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.4s ease;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .close-modal {
+            position: absolute;
+            right: 25px;
+            top: 15px;
+            font-size: 35px;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .close-modal:hover {
+            transform: rotate(90deg);
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .modal-icon {
+            text-align: center;
+            font-size: 5rem;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .modal-content h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .modal-content p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .modal-features {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .modal-feature {
+            text-align: center;
+            color: white;
+            flex: 1;
+            min-width: 100px;
+        }
+        
+        .modal-feature span {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+        }
+        
+        .modal-feature p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        
+        .modal-button {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 20px auto 0;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .modal-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: rgba(255,255,255,0.8);
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .social-links {
+            margin-bottom: 20px;
+        }
+        
+        .social-link {
+            display: inline-block;
+            width: 45px;
+            height: 45px;
+            line-height: 45px;
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            margin: 0 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-3px);
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero-section {
+                padding: 40px 20px;
+            }
+            
+            .hero-text h2 {
+                font-size: 2rem;
+            }
+            
+            .quote-text {
+                font-size: 1.5rem;
+            }
+            
+            .cta-section {
+                padding: 40px 20px;
+            }
+            
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+            
+            .modal-content {
+                margin: 20px;
+                padding: 30px 20px;
+            }
+            
+            .modal-content h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Modal -->
+    <div id="welcomeModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div class="modal-icon">🌿</div>
+            <h2>Welcome to Nature's Beauty! 🌺</h2>
+            <p>Thank you for joining our community of nature enthusiasts. Get ready to explore the most breathtaking natural wonders our planet has to offer.</p>
+            
+            <div class="modal-features">
+                <div class="modal-feature">
+                    <span>🌲</span>
+                    <p>Forest Trails</p>
+                </div>
+                <div class="modal-feature">
+                    <span>⛰️</span>
+                    <p>Mountain Views</p>
+                </div>
+                <div class="modal-feature">
+                    <span>🌊</span>
+                    <p>Ocean Secrets</p>
+                </div>
+                <div class="modal-feature">
+                    <span>✨</span>
+                    <p>Starry Nights</p>
+                </div>
+            </div>
+            
+            <p style="font-size: 1rem; margin-top: 20px;">✨ You'll receive exclusive access to our virtual tours, photography tips, and nature documentaries.</p>
+            
+            <button class="modal-button" onclick="closeModal()">Start Exploring →</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Nature's Beauty</h1>
+            <p class="subtitle">Discover the magic of the natural world through our digital garden of wonders</p>
+        </header>
+        
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>Welcome to Our Digital Garden</h2>
+                    <p>Immerse yourself in a curated collection of nature's most breathtaking moments. From majestic mountains to serene oceans, we bring the beauty of the outdoors directly to your screen.</p>
+                    <p>Every pixel tells a story, every color evokes an emotion. Join us on this visual journey through the wonders of our planet.</p>
+                </div>
+                <div class="hero-image">
+                    🌿
+                </div>
+            </div>
+        </section>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🌲</div>
+                <h3>Forest Adventures</h3>
+                <p>Explore ancient forests and discover hidden trails that lead to magical places where wildlife roams freely.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">⛰️</div>
+                <h3>Mountain Escapes</h3>
+                <p>Conquer peaks and witness breathtaking sunrises from the highest points on Earth, where the air is pure and the views are endless.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🌊</div>
+                <h3>Ocean Serenity</h3>
+                <p>Dive into crystal-clear waters and explore vibrant coral reefs teeming with life and color beneath the waves.</p>
+            </div>
+        </div>
+        
+        <section class="quote-section">
+            <div class="quote-text">
+                "In every walk with nature, one receives far more than he seeks."
+            </div>
+            <div class="quote-author">— John Muir</div>
+        </section>
+        
+        <section class="gallery">
+            <h2>Nature's Canvas</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">🌅 Sunrise</div>
+                <div class="gallery-item">🏔️ Mountains</div>
+                <div class="gallery-item">🌲 Forest</div>
+                <div class="gallery-item">🌊 Ocean</div>
+                <div class="gallery-item">🌸 Flowers</div>
+                <div class="gallery-item">✨ Stars</div>
+            </div>
+        </section>
+        
+        <section class="cta-section">
+            <h2>Start Your Journey Today</h2>
+            <p>Join our community of nature enthusiasts and get access to exclusive content, photography tips, and guided virtual tours.</p>
+            <button class="cta-button" onclick="openModal()">
+                Explore Now
+            </button>
+        </section>
+        
+        <footer>
+            <div class="social-links">
+                <a href="#" class="social-link">📘</a>
+                <a href="#" class="social-link">📷</a>
+                <a href="#" class="social-link">🐦</a>
+                <a href="#" class="social-link">📱</a>
+            </div>
+            <p>&copy; 2024 Nature's Beauty. All rights reserved. | Created with ❤️ for nature lovers</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">Discover the beauty that surrounds us every day</p>
+        </footer>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('welcomeModal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+        }
+        
+        function closeModal() {
+            document.getElementById('welcomeModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+        
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            var modal = document.getElementById('welcomeModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
